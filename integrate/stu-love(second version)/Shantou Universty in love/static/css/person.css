@@ -1,0 +1,236 @@
+/* 全局样式 */
+body {
+    font-family: Arial, sans-serif; /* 设置字体为 Arial 或其他无衬线字体 */
+    margin: 0; /* 移除默认边距 */
+    padding: 20px; /* 添加内边距 */
+}
+    
+    /* 顶部区域 */
+.top-section {
+    display: flex; /* 使用 Flexbox 布局 */
+    align-items: center; /* 垂直居中对齐 */
+    background-color: #f5f5f5; /* 背景颜色 */
+    padding: 20px; /* 内边距 */
+    border-radius: 5px; /* 圆角 */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* 阴影效果 */
+    margin: auto; /* 水平居中 */
+    max-width: 1200px;
+    margin-left: 400px;
+   
+}
+    
+.profile-picture {
+    width: 50px; /* 图片宽度 */
+    height: 50px; /* 图片高度 */
+    object-fit: cover; /* 保持图片比例填充 */
+    border-radius: 50%; /* 圆形图片 */
+    margin-right: 20px; /* 右侧外边距 */
+}
+    
+.user-info {
+    flex-grow: 1; /* 占据剩余空间 */
+}
+    
+.stats {
+    list-style-type: none; /* 移除列表样式 */
+    padding: 0; /* 移除默认内边距 */
+    display: flex; /* 使用 Flexbox 布局 */
+    justify-content: space-around; /* 空间均匀分布 */
+}
+    
+.stats li {
+    color: #666; /* 文字颜色 */
+}
+    
+/* 主要内容区域 */
+.main-content {
+    margin-top: 20px; /* 上方外边距 */
+    display: flex; /* 使用 Flexbox 布局 */
+    margin: auto; /* 水平居中 */
+    align-items: center; /* 垂直居中对齐 */
+    max-width: 1200px; 
+    margin-left: 400px;
+}
+    
+.centered-content {
+    display: flex; /* 使用 Flexbox 布局 */
+    max-width: 1000px; /* 最大宽度 */
+    width: 100%; /* 宽度占满容器 */
+}
+    
+/* 左侧边栏整体样式 */
+.left-sidebar {
+    width: 350px; /* 设置宽度 */
+    height: 600px; /* 设置高度 */
+    padding: 20px; /* 添加内边距 */
+    box-sizing: border-box; /* 确保内边距和边框包含在宽度内 */
+    text-align: center; /* 文字居中 */
+    background-color: #fff; /* 背景颜色 */
+    border-radius: 5px; /* 圆角 */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* 阴影效果 */
+}
+    
+/* 左侧边栏标题样式 */
+.left-sidebar h3 {
+    font-size: 24px; /* 字体放大 */
+    margin-bottom: 20px; /* 下方间距 */
+}
+    
+/* 导航链接样式 */
+.left-sidebar nav a {
+    display: block; /* 每个链接独占一行 */
+    font-size: 18px; /* 字体放大 */
+    margin: 30px 0; /* 上下间距 */
+    text-decoration: none; /* 去掉下划线 */
+    color: #333; /* 颜色 */
+}
+    
+/* 导航链接悬停效果 */
+.left-sidebar nav a:hover {
+    color: #007BFF; /* 悬停时的颜色变化 */
+}
+    
+/* 右侧区域 */
+.right-section {
+    width: 850px; /* 设置宽度 */
+    height: 600px; /* 设置高度 */
+    background-color: #fff; /* 背景颜色 */
+    padding: 20px; /* 添加内边距 */
+    border-radius: 5px; /* 圆角 */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* 阴影效果 */
+}
+    
+/* 特定头像大小 */
+.avatar-small {
+    width: 50px; /* 修改为所需宽度 */
+    height: 50px; /* 修改为所需高度 */
+    object-fit: cover; /* 保持图片比例填充 */
+}
+    
+/* 图片网格 */
+.image-grid {
+    display: flex; /* 使用 Flexbox 布局 */
+    flex-wrap: wrap; /* 换行 */
+    gap: 10px; /* 项目之间的间距 */
+}
+    
+.image-grid img {
+    width: 100px; /* 设置宽度 */
+    height: 100px; /* 设置高度 */
+    cursor: pointer; /* 设置鼠标指针为手形 */
+}
+    
+/* 模态窗口 */
+.modal {
+    display: none; /* 默认隐藏 */
+    position: fixed; /* 固定定位 */
+    z-index: 1; /* 设置层级 */
+    left: 0; /* 左侧位置 */
+    top: 0; /* 顶部位置 */
+    width: 100%; /* 宽度占满屏幕 */
+    height: 100%; /* 高度占满屏幕 */
+    overflow: auto; /* 允许滚动 */
+    background-color: rgba(0,0,0,0.4); /* 设置半透明背景颜色 */
+}
+    
+.modal-content {
+    background-color: #fefefe; /* 设置背景颜色 */
+    margin: 15% auto; /* 水平居中并设置上下间距 */
+    padding: 20px; /* 添加内边距 */
+    border: 1px solid #888; /* 设置边框 */
+    width: 80%; /* 设置宽度 */
+    max-width: 600px; /* 设置最大宽度 */
+}
+    
+/* 圆形头像容器 */
+.circle2 {
+    position: relative; /* 相对定位 */
+    width: 125px; /* 设置宽度 */
+    height: 125px; /* 设置高度 */
+    border-radius: 50%; /* 设置圆形 */
+    overflow: hidden; /* 隐藏溢出内容 */
+    cursor: pointer; /* 设置鼠标指针为手形 */
+    border: 5px solid white; /* 圆形边框 */
+    display: flex; /* 使用 Flexbox 布局 */
+    align-items: center; /* 垂直居中对齐 */
+    justify-content: center; /* 水平居中对齐 */
+}
+    
+/* 圆形头像图片 */
+.circle-photo {
+    width: 100%; /* 设置宽度 */
+    height: 100%; /* 设置高度 */
+    object-fit: cover; /* 保持图片比例填充 */
+}
+    
+/* 文件上传输入框 */
+#avatar-upload {
+    display: none; /* 隐藏文件输入框 */
+}
+    
+/* 右侧区域段落样式 */
+.right-section p {
+    text-align: left; /* 段落左对齐 */
+    font-size: 23px; /* 段落字体大小 */
+    line-height: 2.5; /* 行高 */
+    overflow: hidden; /* 隐藏溢出文本 */
+    text-overflow: ellipsis; /* 溢出时显示省略号 */
+    max-width: 100%; /* 确保段落不会超出矩形宽度 */
+}
+    
+/* 两两放在同一行 */
+.info-row {
+    display: flex; /* 使用 Flexbox 布局 */
+    align-items: center; /* 垂直居中对齐 */
+    justify-content: space-between; /* 空间均匀分布 */
+    width: 100%; /* 设置宽度 */}
+    
+.info-row p {
+    margin: 0; /* 移除默认外边距 */
+    flex: 1; /* 占据剩余空间 */
+    font-size: 20px; /* 设置字体大小 */
+    white-space: nowrap; /* 防止文本换行 */
+    overflow: hidden; /* 隐藏溢出文本 */
+    text-overflow: ellipsis; /* 溢出时显示省略号 */
+    max-width: 50%; /* 设置最大宽度 */
+}
+    
+.info-row p + p {
+    margin-left: 10px; /* 两个之间的间距 */
+}
+    
+.blue-rounded-button {
+    background-color: #007BFF; /* 设置背景颜色为蓝色 */
+    color: white; /* 文字颜色为白色 */
+    border: none; /* 移除默认边框 */
+    padding: 8px 12px; /* 内边距 */
+    font-size: 16px; /* 字体大小 */
+    border-radius: 5px; /* 圆角 */
+    cursor: pointer; /* 设置鼠标指针为手形 */
+    transition: background-color 0.3s; /* 添加过渡效果 */
+}
+    
+.blue-rounded-button:hover {
+    background-color: #0056b3; /* 悬停时的背景颜色 */
+}
+    
+ /* 定义所有表单输入元素的通用样式 */
+.editable {
+    border: 1px solid #000000; /* 黑色边框 */
+    border-radius: 5px; /* 圆角 */
+    padding: 5px; /* 内边距 */
+    font-size: 12px; /* 字体大小 */
+    transition: border-color 0.3s ease; /* 添加过渡效果 */
+}
+    
+/* 当鼠标悬停在表单元素上时改变边框颜色 */
+.editable:hover {
+    border-color: #007BFF; /* 悬停时的边框颜色 */
+}
+    
+/* 选择器特异性更高以确保覆盖select默认样式 */
+.editable:focus, .editable:active {
+    outline: none; /* 移除默认轮廓 */
+    border-color: #007BFF; /* 焦点状态下的边框颜色 */
+}
+

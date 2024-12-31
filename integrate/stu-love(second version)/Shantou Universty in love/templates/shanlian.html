@@ -1,0 +1,176 @@
+<!DOCTYPE html>  
+<html lang="en">  
+<head>  
+    <meta charset="UTF-8">  
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">  
+   
+    <title>分类</title>  
+    <link rel="stylesheet" href="{{url_for('static',filename='css/sidebar.css')}}">
+    <link rel="stylesheet" href="{{url_for('static',filename='css/shanlian.css')}}">
+</head>  
+<body>
+    <div class="container">
+        <div id="container">
+            <!-- 侧边栏 -->
+           <nav class="sidebar">
+               <div class="profile">
+                <img src="{{ url_for('static', filename='img/qingwalogo.jpg') }}" alt="Profile Picture" id="sidebar-avatar">
+                   <h2>{{ username if username else "Guest" }}</h2>
+               </div>
+               <ul>
+                   <li><a href="{{ url_for('index') }}">首页</a></li>
+                   <li><a href="{{ url_for('personal') }}">个人中心</a></li>
+                   <li><a href="{{ url_for('shanlian') }}">汕恋</a></li>
+                   <li><a href="{{ url_for('chat') }}">聊解</a></li>
+                   <li><a href="{{url_for('blindbox')}}">盲盒交友</a></li>
+                   {% if username %}
+                       <li><a href="{{ url_for('logout') }}">注销</a></li>
+                   {% else %}
+                       <li><a href="{{ url_for('login') }}">登录</a></li>
+                       <li><a href="{{ url_for('register') }}">注册</a></li>
+                   {% endif %}
+               </ul>
+           </nav>
+        </div>
+
+        <div class="main-content">
+            <form id="filter-form">
+                <div class="filter-form">
+                    <label>校区:</label>
+                    <div class="radio-wrapper">
+                        <input type="radio" id="campus-all" name="campus" class="radio-input" value="all" checked>
+                        <label for="campus-all" class="radio-custom">全部</label>
+                    </div>
+                    <div class="radio-wrapper">
+                        <input type="radio" id="campus-east-coast" name="campus" class="radio-input" value="东海岸校区">
+                        <label for="campus-east-coast" class="radio-custom">东海岸校区</label>
+                    </div>
+                    <div class="radio-wrapper">
+                        <input type="radio" id="campus-sangpu" name="campus" class="radio-input" value="桑浦山校区">
+                        <label for="campus-sangpu" class="radio-custom">桑浦山校区</label>
+                    </div>
+                </div>
+                <br>
+                <br>
+                <div class="filter-form">
+                    <label>年级:</label>
+                    <div class="radio-wrapper">
+                        <input type="radio" id="grade-all" name="grade" class="radio-input" value="all" checked>
+                        <label for="grade-all" class="radio-custom">全部</label>
+                    </div>
+                    <div class="radio-wrapper">
+                        <input type="radio" id="grade-21" name="grade" class="radio-input" value="21级">
+                        <label for="grade-21" class="radio-custom">21级</label>
+                    </div>
+                    <div class="radio-wrapper">
+                        <input type="radio" id="grade-22" name="grade" class="radio-input" value="22级">
+                        <label for="grade-22" class="radio-custom">22级</label>
+                    </div>
+                    <div class="radio-wrapper">
+                        <input type="radio" id="grade-23" name="grade" class="radio-input" value="23级">
+                        <label for="grade-23" class="radio-custom">23级</label>
+                    </div>
+                    <div class="radio-wrapper">
+                        <input type="radio" id="grade-24" name="grade" class="radio-input" value="24级">
+                        <label for="grade-24" class="radio-custom">24级</label>
+                    </div>
+                    <div class="radio-wrapper">
+                        <input type="radio" id="grade-25" name="grade" class="radio-input" value="25级">
+                        <label for="grade-25" class="radio-custom">25级</label>
+                    </div>
+                </div>
+                <br>
+                <br>
+                <div class="filter-form">
+                    <label>性别:</label>
+                    <div class="radio-wrapper">
+                        <input type="radio" id="gender-all" name="gender" class="radio-input" value="all" checked>
+                        <label for="gender-all" class="radio-custom">全部</label>
+                    </div>
+                    <div class="radio-wrapper">
+                        <input type="radio" id="gender-male" name="gender" class="radio-input" value="男">
+                        <label for="gender-male" class="radio-custom">男</label>
+                    </div>
+                    <div class="radio-wrapper">
+                        <input type="radio" id="gender-female" name="gender" class="radio-input" value="女">
+                        <label for="gender-female" class="radio-custom">女</label>
+                    </div>
+                </div>
+                <br>
+                <br>
+                <!-- 学院选择 -->
+                <div class="filter-form">
+                    <label>学院:</label>
+                    <div class="radio-wrapper">
+                        <input type="radio" id="college-all" name="college" class="radio-input" value="all" checked>
+                        <label for="college-all" class="radio-custom">全部</label>
+                    </div>
+                    <div class="radio-wrapper">
+                        <input type="radio" id="college-liberal-arts" name="college" class="radio-input" value="文学院">
+                        <label for="college-liberal-arts" class="radio-custom">文学院</label>
+                    </div>
+                    <div class="radio-wrapper">
+                        <input type="radio" id="college-science" name="college" class="radio-input" value="理学院">
+                        <label for="college-science" class="radio-custom">理学院</label>
+                    </div>
+                    <div class="radio-wrapper">
+                        <input type="radio" id="college-engineering" name="college" class="radio-input" value="工学院">
+                        <label for="college-engineering" class="radio-custom">工学院</label>
+                    </div>
+                    <div class="radio-wrapper">
+                        <input type="radio" id="college-law" name="college" class="radio-input" value="法学院">
+                        <label for="college-law" class="radio-custom">法学院</label>
+                    </div>
+                    <div class="radio-wrapper">
+                        <input type="radio" id="college-business" name="college" class="radio-input" value="商学院">
+                        <label for="college-business" class="radio-custom">商学院</label>
+                    </div>
+                    <div class="radio-wrapper">
+                        <input type="radio" id="college-art-design" name="college" class="radio-input" value="长江艺术与设计学院">
+                        <label for="college-art-design" class="radio-custom">长江艺术与设计学院</label>
+                    </div>
+                    <div class="radio-wrapper">
+                        <input type="radio" id="college-journalism" name="college" class="radio-input" value="长江新闻与传播学院">
+                        <label for="college-journalism" class="radio-custom">长江新闻与传播学院</label>
+                    </div>
+                    <div class="radio-wrapper">
+                        <input type="radio" id="college-medicine" name="college" class="radio-input" value="医学院">
+                        <label for="college-medicine" class="radio-custom">医学院</label>
+                    </div>
+                    <div class="radio-wrapper">
+                        <input type="radio" id="college-marxism" name="college" class="radio-input" value="马克思学院">
+                        <label for="college-marxism" class="radio-custom">马克思学院</label>
+                    </div>
+                    <div class="radio-wrapper">
+                        <input type="radio" id="college-continuing-edu" name="college" class="radio-input" value="继续教育学院">
+                        <label for="college-continuing-edu" class="radio-custom">继续教育学院</label>
+                    </div>
+                    <div class="radio-wrapper">
+                        <input type="radio" id="college-international" name="college" class="radio-input" value="国际学院">
+                        <label for="college-international" class="radio-custom">国际学院</label>
+                    </div>
+                    <div class="radio-wrapper">
+                        <input type="radio" id="college-chemistry" name="college" class="radio-input" value="化学化工学院">
+                        <label for="college-chemistry" class="radio-custom">化学化工学院</label>
+                    </div>
+                    <div class="radio-wrapper">
+                        <input type="radio" id="college-math" name="college" class="radio-input" value="数学与计算机学院">
+                        <label for="college-math" class="radio-custom">数学与计算机学院</label>
+                    </div>
+                </div>
+                <br>
+                <button type="submit">确认</button>
+            </form>
+            <br>
+            <br>
+            <div class="bod" id="cards-container">
+                <!-- 用户卡片将在这里动态生成 -->
+            </div>
+        </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="{{ url_for('static', filename='js/select_avatar.js') }}"></script>
+</body>
+
+
+</html>

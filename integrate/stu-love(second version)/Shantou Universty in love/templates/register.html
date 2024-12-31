@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>用户注册页面</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+/* 修改body */
+        body {
+            height: 100vh;
+            /* background: url(static/注册背景.png) no-repeat;  删除*/
+            background-size: cover;
+            display: flex;
+            justify-content: flex-start;/*修改左对齐*/
+            align-items: center;
+        }
+/* 添加视频样式 */
+#background-video {
+                position: fixed; /* 使用fixed定位 */
+                right: 0;
+                bottom: 0;
+                min-width: 100%; 
+                min-height: 100%;
+                width: 100vw;
+                height: 100vh;
+                z-index: -100; /* 确保视频在内容下方 */
+                background-size: cover;
+                object-fit: cover; /* 视频充满整个屏幕 */
+            }
+/* 修改box */
+        .box {
+            width: 350px; 
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            
+                /* 修改部分 */
+                    /* backdrop-filter: blur(1px);*/
+                    background-color: rgba(241, 249, 255, 0.5); /* 设置背景颜色为半透明
+                    /* 边框 */
+                    border: 1px solid rgba(0, 0, 0, 0.3);
+                    /* 阴影 */
+                    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+                    margin-left: 200px; /* 新增，使盒子向左移动一定的比例 */
+                    margin-top: 100px; /* 新增，使盒子向上移动一定的比例 */
+                    border-radius: 10px;
+
+        }
+
+        .box>h2 {
+            color: #000;
+            margin-bottom: 30px;
+        }
+
+        .box .input-box {
+            display: flex;
+            flex-direction: column;
+            box-sizing: border-box;
+            margin-bottom: 10px;
+        }
+
+        .box .input-box label {
+            font-size: 13px;
+            color: #000;
+            margin-bottom: 5px;
+        }
+
+        .box .input-box input {
+            letter-spacing: 1px;
+            font-size: 14px;
+            width: 250px;
+            height: 35px;
+            border-radius: 5px;
+            border: 1px solid rgba(0, 0, 0, 0.3);
+            background: rgba(230, 230, 230, 0.8);
+            outline: none;
+            padding: 0 12px;
+            color: #000;
+            transition: 0.2s;
+        }
+
+        /* 输入框聚焦效果 */
+        .box .input-box input:focus {
+            border: 1px solid rgba(0, 0, 0, 0.8);
+        }
+
+        .box .btn-box {
+            width: 250px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .box .btn-box>a {
+            outline: none;
+            display: block;
+            width: 250px;
+            text-align: end;
+            text-decoration: none;
+            font-size: 13px;
+            color: rgba(0, 0, 0, 0.8);
+        }
+
+        .box .btn-box>a:hover {
+            color: rgba(0, 0, 0, 1);
+        }
+
+        .box .btn-box>div {
+            margin-top: 10px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .box .btn-box>div>button {
+            outline: none;
+            margin-top: 10px;
+            display: block;
+            font-size: 14px;
+            border-radius: 5px;
+            transition: 0.2s;
+            width: 120px;
+            height: 35px;
+            color: #FFF;
+            border: 1px solid rgba(0, 96, 96, 0.7);
+            background: rgba(0, 96, 96, 0.45);
+            cursor: pointer;
+        }
+
+        .box .btn-box>div>button:hover {
+            border: 1px solid rgba(0, 96, 96);
+            background: rgba(0, 96, 96);
+        }
+    </style>
+</head>
+
+<body>
+<!-- 新添加背景视频 -->
+    <video autoplay muted loop id="background-video">
+        <source src="static/video3.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+    <div class="box">
+        <h2>注册</h2>
+        <!-- 显示 Flash 消息 -->
+        {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+        <ul class="flashes" style="list-style-type: none; color: rgb(36, 28, 28); font-size: small;">
+            {% for category, message in messages %}
+            <li class="{{ category }}">{{ message }}</li>
+            {% endfor %}
+        </ul>
+        {% endif %}
+        {% endwith %}
+        <form method="post" action="/register" autocomplete="on">
+            <div class="input-box">
+                <label>电话号码：</label>
+                <input type="text" placeholder="请输入电话号码" name="phone_number" required />
+            </div>
+            <div class="input-box">
+                <label>密 码：</label>
+                <input type="password" placeholder="请输入密码" name="psw" required />
+            </div>
+            <div class="input-box">
+                <label>确 认：</label>
+                <input type="password" placeholder="请再次输入密码" name="confirm_psw" required />
+            </div>
+            <div class="input-box">
+                <label>姓 名：</label>
+                <input type="text" placeholder="请输入真实姓名" name="name" required />
+            </div>
+            <div class="input-box">
+                <label>邮 箱：</label>
+                <input type="email" placeholder="请输入电子邮箱" name="email" required />
+            </div>
+            <div class="btn-box">
+                <div>
+                    <button type="submit">提交注册</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</body>
+
+</html>
