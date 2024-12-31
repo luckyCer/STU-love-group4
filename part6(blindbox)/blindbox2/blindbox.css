@@ -1,0 +1,267 @@
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+}
+
+/* 容器样式 */
+.container {
+  display: flex;
+  height: 100vh;
+  max-width: 100vw;
+  /* 确保容器不会超出视口宽度 */
+  overflow-x: hidden;
+  /* 防止水平滚动条出现 */
+}
+
+/* 侧边栏样式 */
+.sidebar {
+  width: 350px;
+  /* 新的宽度 */
+  background-color: #f4f4f4;
+  padding: 20px;
+  box-sizing: border-box;
+  height: 100vh;
+  /* 让侧边栏始终填满页面高度 */
+  flex-shrink: 0;
+  /* 确保侧边栏不会缩小 */
+}
+
+.sidebar .logo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.sidebar .logo img {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.sidebar ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.sidebar ul li {
+  margin-bottom: 10px;
+}
+
+.sidebar ul li a {
+  text-decoration: none;
+  color: #333;
+  display: block;
+  padding: 8px;
+}
+
+.sidebar ul li a:hover {
+  background-color: #979fa7;
+  color: #fff;
+}
+
+/* 内容区域样式 */
+.content-area {
+  flex-grow: 1;
+  /* 让.content-area占据剩余空间 */
+  padding: 20px 30px;
+  /* 为.content-area的左右两侧留出30px的空白 */
+  box-sizing: border-box;
+  position: relative;
+}
+
+/* 弹幕板样式 */
+.bulletin-board {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 10;
+  pointer-events: none;
+  width: 100%;
+  /* 弹幕宽度与.content-area一致 */
+}
+
+/* 主内容区域样式 */
+.main-content {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: #ffbfa4;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+.main-content img.main-image {
+  width: 100%;
+  display: block;
+  margin: 0 auto;
+}
+
+/* 问号图片样式 */
+.question-mark {
+  position: absolute;
+  top: 270px;
+  /* 距离顶部的距离 */
+  left: 140px;
+  /* 距离左边的距离 */
+  cursor: pointer;
+  /* 鼠标悬停时变为指针 */
+  width: 100px;
+  /* 根据需要调整大小 */
+  height: auto;
+}
+
+/* 模态框样式 */
+.modal {
+  display: none;
+  /* 默认情况下隐藏模态框 */
+  position: fixed;
+  z-index: 1000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgb(0, 0, 0);
+  background-color: rgba(0, 0, 0, 0.4);
+}
+
+.modal-content {
+  background-color: #fefefe;
+  margin: 15% auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%;
+  /* 可根据需要调整 */
+  max-width: 600px;
+  /* 最大宽度限制 */
+}
+
+.close {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+/* 盲盒容器样式 */
+.box-container {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  box-sizing: border-box;
+  margin-top: 20px;
+}
+
+.box-left,
+.box-right {
+  width: 45%;
+  margin: 20px;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  box-sizing: border-box;
+}
+
+.box-left {
+  background: #6495ed;
+}
+
+.box-right {
+  background: #ff6666;
+}
+
+.box-left img,
+.box-right img {
+  width: 100%;
+  height: auto;
+  margin-bottom: 10px;
+  border-radius: 10px;
+}
+
+/* 按钮容器样式 */
+.button-container {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.button {
+  background: #000;
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-top: 10px;
+  width: 256px;
+  height: 40px;
+  margin-right: 10px;
+  font-size: 16px;
+  box-sizing: border-box;
+}
+
+.button:last-child {
+  margin-right: 0;
+}
+
+/* 弹幕内容样式 */
+.bulletin-content {
+  position: relative;
+  width: 100%;
+  /* 确保弹幕容器宽度与.content-area一致 */
+  height: 100px;
+  /* 根据实际需求调整高度 */
+  overflow: hidden;
+  /* 防止弹幕溢出容器 */
+}
+
+.bulletin-item {
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: 5px 10px;
+  border-radius: 5px;
+  margin: 5px;
+  font-size: 16px;
+  opacity: 0;
+  transform: translateX(100%);
+  animation: popup 3s ease-out forwards;
+  pointer-events: none;
+}
+
+@keyframes popup {
+  0% {
+    opacity: 0;
+    transform: translateX(100%) translateY(-20px);
+  }
+
+  10% {
+    opacity: 1;
+    transform: translateX(0) translateY(-20px);
+  }
+
+  90% {
+    opacity: 1;
+    transform: translateX(0) translateY(0);
+  }
+
+  100% {
+    opacity: 0;
+    transform: translateX(0) translateY(20px);
+  }
+}

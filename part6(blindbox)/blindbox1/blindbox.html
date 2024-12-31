@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>一元盲盒</title>
+  <link rel="stylesheet" href="blindbox.css">
+</head>
+
+<body>
+  <div class="container">
+    <div class="sidebar">
+      <div class="logo">
+        <img src="path_to_your_logo.png" alt="Logo">
+      </div>
+      <ul>
+        <li><a href="{{url_for('main_page')}}">首页</a></li>
+        <li><a href="{{url_for('personal')}}">个人信息</a></li>
+        <li><a href="{{url_for('shanlian')}}">汕恋</a></li>
+        <li><a href="{{url_for('chat')}}">聊天界面</a></li>
+      </ul>
+    </div>
+    <div class="'content-area">
+      <div class="main-content">
+        <img src="images/交友盲盒.png" alt="main-image">
+        <div class="box-container">
+          <div class="box box-left">
+            <img src="images/男生盒子.jpg" alt="box-image">
+            <button class="button">放入1张男生纸条</button>
+            <button class="button">抽取1张男生纸条</button>
+          </div>
+          <div class="box box-right">
+            <img src="images/女生盒子.jpg" alt="box-image">
+            <button class="button">放入1张女生纸条</button>
+            <button class="button">抽取1张女生纸条</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="bulletin-board">
+      <div class="bulletin-content">
+        <!-- 弹幕内容将在这里弹出 -->
+      </div>
+    </div>
+  </div>
+
+  <script src="blindbox.js"></script>
+</body>
+
+</html>
