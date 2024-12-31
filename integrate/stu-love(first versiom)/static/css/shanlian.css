@@ -1,0 +1,198 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.container {
+    display: flex;
+    height: 100vh;
+    z-index: 1;
+}
+
+/* 侧边栏样式 */
+.sidebar {
+    width: 100px;
+    background-color: #f4f4f4;
+    padding: 20px;
+    box-sizing: border-box;
+    position: fixed;
+    top: 0;
+    left: 0;
+}
+
+.sidebar .logo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.sidebar .logo img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.sidebar ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.sidebar ul li {
+    margin-bottom: 10px;
+}
+
+.sidebar ul li a {
+    text-decoration: none;
+    color: #333;
+    display: block;
+    padding: 8px;
+}
+
+.sidebar ul li a:hover {
+    background-color: #979fa7;
+    color: #fff;
+}
+
+/* 主内容区域 */
+.main-content {
+    margin-left: 100px; /* 为主内容区域留出侧边栏的空间（宽度+内边距） */
+    padding: 20px;
+    flex: 1;
+}
+
+/* 筛选栏样式 */
+.filter-form {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    width: 100%;
+    padding: 20px;
+    background-color: #fff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+}
+
+.filter-form label {
+    margin-right: 10px;
+}
+
+.filter-form input[type="radio"] {
+    margin-right: 10px;
+}
+
+.filter-form div {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.filter-form button {
+    background-color: #007BFF;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.filter-form button:hover {
+    background-color: #0056b3;
+}
+
+/* 用户卡片样式 */
+.bod {
+    position: relative;
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    background: #f4effb;
+}
+
+.card {
+    position: relative;
+    width: 300px;
+    height: 450px;
+    margin: 20px;
+    background-color: #758a99;
+    border-radius: 20px;
+    overflow: hidden;
+    color: #fff;
+    box-shadow: 0 0 30px rgba(0, 0, 0, 0.5);
+    perspective: 1000px;
+}
+
+.card .front,
+.card .back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    transition: transform 0.6s;
+    transform-style: preserve-3d;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    box-sizing: border-box;
+    border-radius: 20px;
+}
+
+.card .front {
+    background-color: #758a99;
+    z-index: 2;
+}
+
+.card .back {
+    background-color: #5a6f7c;
+    transform: rotateY(180deg);
+}
+
+.card:hover .front {
+    transform: rotateY(-180deg);
+}
+
+.card:hover .back {
+    transform: rotateY(0deg);
+}
+
+/* 照片样式 */
+.card .photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 20px 20px 0 0;
+}
+
+/* 标题和段落样式 */
+.card h5,
+.card h6 {
+    margin: 0 0 10px;
+    text-align: center;
+}
+
+.card p {
+    width: 100%;
+    font-size: 16px;
+    line-height: 24px;
+    text-align: center;
+}
+
+.card a {
+    margin-top: 20px;
+    display: inline-block;
+    text-align: center;
+    font-size: 14px;
+    color: rgba(255, 255, 255, 0.8);
+    text-decoration: none;
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    padding: 8px 32px;
+    border-radius: 8px;
+}

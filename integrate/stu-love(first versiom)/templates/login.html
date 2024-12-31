@@ -1,0 +1,159 @@
+<form method="post" action="/login" autocomplete="on">
+    <!DOCTYPE html>
+    <html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <title>登录注册页面</title>
+        <style>
+            * {
+                margin: 0;
+                top: 0;
+            }
+
+            body {
+                height: 100vh;
+                background: url(static/背景.jpg) no-repeat;
+                background-size: cover;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+
+            .box {
+                width: 350px;
+                height: 350px;
+                backdrop-filter: blur(1px);
+                background: linear-gradient(to bottom, rgba(163, 230, 239, 0.45), rgba(243, 194, 156, 0.38));
+                /* 渐变背景，带透明度 */
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                border-radius: 6px;
+            }
+
+            .box>h2 {
+                color: #000;
+                /*color: rgba(226, 238, 240, 0.9);*/
+                margin-bottom: 30px;
+            }
+
+            .box .input-box {
+                display: flex;
+                flex-direction: column;
+                box-sizing: border-box;
+                margin-bottom: 10px;
+            }
+
+            .box .input-box label {
+                font-size: 13px;
+                color: #000;
+                margin-bottom: 5px;
+            }
+
+            .box .input-box input {
+                letter-spacing: 1px;
+                font-size: 14px;
+                box-sizing: border-box;
+                width: 250px;
+                height: 35px;
+                border-radius: 5px;
+                border: 1px solid rgba(0, 0, 0, 0.3);
+                background: rgba(230, 230, 230, 0.8);
+                outline: none;
+                padding: 0 12px;
+                color: #000;
+                transition: 0.2s;
+            }
+
+            /* 输入框聚焦效果 */
+            .box .input-box input:focus {
+                border: 1px solid rgba(255, 255, 255, 0.8);
+            }
+
+            .box .btn-box {
+                width: 250px;
+                display: flex;
+                flex-direction: column;
+            }
+
+            .box .btn-box>a {
+                outline: none;
+                display: block;
+                width: 250px;
+                text-align: end;
+                text-decoration: none;
+                font-size: 13px;
+                color: rgba(255, 255, 255, 0.8);
+            }
+
+            .box .btn-box>a:hover {
+                color: rgba(255, 255, 255, 1);
+            }
+
+            .box .btn-box>div {
+                margin-top: 10px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+
+            .box .btn-box>div>button {
+                outline: none;
+                margin-top: 10px;
+                display: block;
+                font-size: 14px;
+                border-radius: 5px;
+                transition: 0.2s;
+            }
+
+            .box .btn-box>div>button:nth-of-type(1) {
+                width: 120px;
+                height: 35px;
+                color: rgba(255, 255, 255, 0.9);
+                border: 1px solid rgba(00, 96, 96, 0.7);
+                background: rgba(0, 96, 96, 0.45);
+            }
+
+            .box .btn-box>div>button:hover {
+                border: 1px solid rgba(00, 96, 96);
+                background: rgba(00, 96, 96);
+            }
+        </style>
+        <!-- <link rel="stylesheet" href="./style.css"> -->
+    </head>
+
+    <body>
+        <div class="box">
+            <h2>汕恋</h2>
+            <!-- 当用户输入的凭据在数据库中存在时，将会显示“登录成功”的消息 -->
+            {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+            <ul class="flashes" style="list-style-type: none; color: rgb(36, 28, 28);font-size: small; ">
+                {% for category, message in messages %}
+                <li class="{{ category }}">{{ message }}</li>
+                {% endfor %}
+            </ul>
+            {% endif %}
+            {% endwith %}
+            <div class="input-box">
+                <label>手机号:</label>
+                <input type="text" placeholder="请输入手机号" name="phone_number" required />
+            </div>
+            <div class="input-box">
+                <label>密码:</label>
+                <input type="password" placeholder="请输入密码" name="psw" required />
+            </div>
+            <div class="btn-box">
+                <a href="javascript:void(0)">忘记密码?</a>
+                <div>
+                    <button type="submit">登录</button>
+                    <!-- <button type="submit">注册</button> -->
+                </div>
+            </div>
+        </div>
+</form>
+</body>
+
+</html>

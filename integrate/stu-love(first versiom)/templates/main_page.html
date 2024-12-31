@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>主页</title>
+    <!--<link rel="stylesheet" href="sidebar.css">-->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/sidebar.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/Pop-up window.css') }}">
+</head>
+<body>
+    <!-- 页面容器 -->
+    <div id="container">
+         <!-- 侧边栏 -->
+        <div class="sidebar">
+            <div class="logo">
+                <img src="path_to_your_logo.png" alt="Logo">
+            </div>
+            <ul>
+                <li><a href="{{url_for('main_page')}}">首页</a></li>
+                <li><a href="{{url_for('personal')}}">个人信息</a></li>
+                <li><a href="{{url_for('shanlian')}}">汕恋</a></li>
+                <li><a href="{{url_for('chat')}}">聊天界面</a><li>
+            </ul>
+        </div>
+        
+        {% if user_info_missing %}
+            <div class="custom-modal">
+                <div class="custom-modal-content">
+                    <h5 class="custom-modal-title">提示</h5>
+                    <p>请完善你的信息！</p>
+                    <a href="{{ url_for('personal') }}" class="btn btn-primary">前往个人中心</a>
+                </div>
+            </div>
+        {% endif %}
+
+    </div>
+</body>
+</html>
+
+
+

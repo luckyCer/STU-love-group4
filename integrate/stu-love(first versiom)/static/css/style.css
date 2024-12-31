@@ -1,0 +1,47 @@
+.chat-container {
+    width: 400px;
+    margin: 0 auto;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    padding: 10px;
+    background-color: #fff;
+    display: flex;
+    flex-direction: column;
+    height: 500px;
+}
+
+.messages {
+    flex: 1;
+    overflow-y: auto;
+    margin-bottom: 10px;
+    border: 1px solid #e1e1e1;
+    border-radius: 5px;
+    padding: 5px;
+}
+
+.message {
+    margin: 5px 0;
+}
+
+input[type="text"] {
+    flex: none;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.friend-list {
+    width: 200px;
+    margin-right: 10px;
+    border-right: 1px solid #ccc;
+}
+
+.friend-list ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.friend-list li {
+    padding: 5px;
+    border-bottom: 1px solid #e1e1e1;
+}

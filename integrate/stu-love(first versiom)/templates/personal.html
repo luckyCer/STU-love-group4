@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>个人中心</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/person.css') }}">
+</head>
+<body>
+    <!--<script>
+        const userId = "{{ session.get('user_id') }}";  // Flask 渲染 session 中的 user_id
+        console.log('User ID:', userId);
+    </script>-->
+    <div id="container">
+        <aside id="sidebar">
+            <nav>
+                <ul>
+                    <li><a herf="{{url_for('main_page')}}">首页</a></li>
+                    <li><a href="{{url_for('personal')}}">个人中心</a></li>
+                    <li><a href="{{url_for('shanlian')}}">汕恋</a></li>
+                </ul>
+            </nav>
+        </aside>
+    </div>
+    <section id="personal" class="full-screen2">
+        <div class="personal-container">
+            <div class="rectangle left-rectangle">
+                <div class="circle2" id="avatar-container">
+                    <img src="" alt="头像" class="circle-photo" id="avatar" onclick="showPresetImages()">
+                </div>
+                <div id="preset-images-modal" class="modal" style="display: none;">
+                    <div class="modal-content">
+                        <span class="close" onclick="closePresetImages()">&times;</span>
+                        <h2>选择头像</h2>
+                        <div class="image-grid">
+                            <img src="static/1.png" alt="Image 1" onclick="selectImage(this)">
+                            <img src="static/2.png" alt="Image 2" onclick="selectImage(this)">
+                            <img src="static/3.png" alt="Image 3" onclick="selectImage(this)">
+                            <img src="static/4.png" alt="Image 4" onclick="selectImage(this)">
+                            <img src="static/5.png" alt="Image 5" onclick="selectImage(this)">
+                        </div>
+                    </div>
+                </div>
+            
+                <br><br><br><br>
+                <p>昵称：<input type="text" id="username" name="username" class="editable" placeholder="请输入昵称(必填)"></p><br>
+                <p>性别：
+                    <select id="gender" name="gender" class="editable">
+                        <option value="" selected disabled>请选择性别(必填)</option>
+                        <option value="男">男</option>
+                        <option value="女">女</option>
+                    </select>
+                </p><br>
+                <!--<p>年龄：<input type="text" id="age" name="age" class="editable"  oninput="validateAge(this)" placeholder="请输入年龄(必填)"></p><br>-->
+                <p>年级：
+                    <select id="grade" name="grade" class="editable">
+                        <option value="" selected disabled>请选择年级(必填)</option>
+                        <option value ="24级">24级</option>
+                        <option value ="23级">23级</option>
+                        <option value ="22级">22级</option>
+                        <option value ="21级">21级</option>
+                    </select>
+                <p><br>
+                <!--<p>个性签名：<input type="text" id="signature" name="signature" class="editable" placeholder="请输入个性签名(选填)"></p><br>-->
+                <p>校区：
+                    <select id="campus" name="campus" class="editable">
+                        <option value="" selected disabled>请选择校区(必填)</option>
+                        <option value="桑浦山校区">桑浦山校区</option>
+                        <option value="东海岸校区">东海岸校区</option>
+                    </select>
+                </p><br>
+                <p>学院：
+                    <select id ="college" name="college" calss="editable">
+                        <option value="" selected disabled>请选择学院(必填)</option>
+                        <option value = "文学院">文学院</option>
+                        <option value = "法学院">法学院</option>
+                        <option value = "商学院">商学院</option>
+                        <option value = "理学院">理学院</option>
+                        <option value = "工学院" >工学院</option>
+                        <option value = "医学院">医学院</option>
+                        <option value = "长江艺术与设计学院">长江艺术与设计学院</option>
+                        <option value = "长江新闻与传播学院">长江新闻与传播学院</option>
+                        <option value = "马克思主义学院">马克思主义学院</option>
+                        <option value = "公共卫生学院">公共卫生学院</option>
+                        <option value = "继续教育学院">继续教育学院</option>
+                        <option value = "数学与计算机学院">数学与计算机学院</option>
+                        <option value = "化学化工学院">化学化工学院</option>
+                        <option value = "国际学院">国际学院</option>
+                    </select>
+                </p><br>
+                <p>年级专业：<input type="text" id="major" name="major" class="editable" placeholder="请输入专业(选填)"></p><br>
+            </div>
+            <div class="rectangle right-rectangle">
+                <h2>个人信息</h2>
+                <div class="info-row">
+                    <p>家乡：<input type="text" id="hometown" name="hometown" class="editable" placeholder="请输入家乡(选填)"></p>
+                    <p>爱好：<input type="text" id="hobby" name="hobby" class="editable" placeholder="请输入爱好(选填)"></p>
+                </div>
+                <!--<br> 
+
+                <div class="info-row">
+                    <p>校区：
+                        <select id="campus" name="campus" class="editable">
+                            <option value="" selected disabled>请选择校区</option>
+                            <option value="桑浦山校区">桑浦山校区</option>
+                            <option value="东海岸校区">东海岸校区</option>
+                        </select>
+                    </p>
+                    <p>年级专业：<input type="text" id="major" name="major" class="editable" placeholder="请输入年级专业(选填)"></p>
+
+                </div>
+                <br>-->
+                <div class="info-row">
+                    <p>星座：
+                        <select id="constellation" name="constellation" class="editable">
+                            <option value="" selected disabled>请选择星座(选填)</option>
+                            <option value="白羊座">白羊座</option>
+                            <option value="金牛座">金牛座</option>
+                            <option value="双子座">双子座</option>
+                            <option value="巨蟹座">巨蟹座</option>
+                            <option value="狮子座">狮子座</option>
+                            <option value="处女座">处女座</option>
+                            <option value="天秤座">天秤座</option>
+                            <option value="天蝎座">天蝎座</option>
+                            <option value="射手座">射手座</option>
+                            <option value="摩羯座">摩羯座</option>
+                            <option value="水瓶座">水瓶座</option>
+                            <option value="双鱼座">双鱼座</option>
+                        </select>
+                    </p>
+                    <p>MBTI：<input type="text" id="mbti" name="mbti" class="editable" placeholder="请输入MBTI(选填)"></p>
+                </div>
+                <br> 
+                <div class="info-row">
+                    <p>生日：<input type="text" id="birthday" name="birthday" class="editable" placeholder="请输入生日(选填)"></p>
+                    <p>爱情宣言：<input type="text" id="declaration" name="declaration" class="editable" placeholder="请输入爱情宣言(选填)"></p>
+                </div>
+                <br>
+                <p>个性标签：<input type="text" id="personality" name="personality" class="editable" placeholder="请输入标签(选填)"></p><br>
+                <br>
+                <button id="saveBtn" onclick="saveInfo()">保存信息</button>
+                <button id="editBtn" onclick="toggleEditMode()" style="display: none;">编辑信息</button>
+            </div>
+        </div>
+    </section>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="{{ url_for('static', filename='js/select_avatar.js') }}"></script>
+</body>
+</html>
