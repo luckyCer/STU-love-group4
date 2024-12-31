@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>登录注册页面</title>
+  <style>
+    body {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      margin: 0;
+      background-color: #ffffff;
+      /* 白色背景 */
+      position: relative;
+      overflow: hidden;
+    }
+
+    .video-background {
+      position: absolute;
+      top: 60px;
+      /* 调整为导航栏高度 */
+      left: 0;
+      width: 100%;
+      height: calc(100% - 60px);
+      /* 高度减去导航栏高度 */
+      z-index: -1;
+    }
+
+    .video-background video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .navbar {
+      position: absolute;
+      top: 0;
+      width: 100%;
+      display: flex;
+      align-items: center;
+      background-color: #ffffff;
+      /* 白色背景 */
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      /* 添加阴影效果 */
+      z-index: 1;
+    }
+
+    .navbar img {
+      height: 60px;
+      /* 图片高度 */
+      margin-right: 20px;
+      /* 图片和文字之间的间隔 */
+    }
+
+    .scroll-number {
+      color: #ffffff;
+      font-size: 90px;
+      font-weight: 600;
+      letter-spacing: 12px;
+      word-wrap: break-word;
+      line-height: normal;
+
+    }
+
+    .display-text {
+      color: white;
+      height: 60px;
+      font-size: 40px;
+      font-weight: 400;
+      letter-spacing: 4px;
+      word-wrap: break-word;
+      margin-top: 20px;
+      line-height: normal;
+    }
+
+    .button-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: absolute;
+      top: 60%;
+      /* 向下布局 */
+      z-index: 1;
+    }
+
+    button {
+      position: relative;
+      height: 60px;
+      width: 200px;
+      margin-top: 50px;
+      background-color: white;
+      display: inline-block;
+      text-decoration: none;
+      border-radius: 100px;
+      line-height: 60px;
+      color: #000;
+      text-align: center;
+      font-size: 24px;
+      font-weight: bold;
+      letter-spacing: 1px;
+      z-index: 1000;
+      margin-right: 20px;
+      margin-left: 20px;
+      border: none;
+    }
+
+    button:hover {
+      background-color: #0056b3;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="navbar">
+    <img src="static/logo.png" alt="Logo"> <!-- 图片链接 -->
+    <h2>欢迎来到我们的主页</h2>
+  </div>
+
+  <div class="video-background">
+    <video autoplay muted loop controls>
+
+      <source src="static/video.mp4" type="video/mp4">
+      您的浏览器不支持 video 标签。
+    </video>
+  </div>
+
+  <div class="scroll-number" id="scroll-number">0</div>
+
+  <div class="display-text">
+    在感受 在记录 在珍惜
+  </div>
+
+  <div class="button-container">
+    <button onclick="location.href='/login'">登录</button>
+    <button onclick="location.href='/register'">注册</button>
+  </div>
+
+  <script>
+    function animateNumber(targetNumber, duration) {
+      const element = document.getElementById('scroll-number');
+      const startNumber = 0;
+      const startTime = performance.now();
+
+      function updateNumber(currentTime) {
+        const elapsed = currentTime - startTime;
+        const progress = Math.min(elapsed / duration, 1);
+        const currentNumber = Math.floor(startNumber + progress * (targetNumber - startNumber));
+
+
+        element.textContent = currentNumber;
+
+        if (progress < 1) {
+          requestAnimationFrame(updateNumber);
+        }
+      }
+
+      requestAnimationFrame(updateNumber);
+    }
+
+    // 页面加载时调用 animateNumber 函数
+    window.onload = function () {
+      animateNumber(1392010, 4000); // 目标数字为 123456，持续 4 秒
+    }
+  </script>
+
+</body>
+
+</html>
