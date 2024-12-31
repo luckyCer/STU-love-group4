@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>个人中心</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="#personal">个人中心</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section id="personal" class="full-screen2">
+        <div class="personal-container">
+            <div class="rectangle left-rectangle">
+                <div class="circle2" id="avatar-container">
+                    <img src="" alt="头像" class="circle-photo" id="avatar" onclick="showPresetImages()">
+                </div>
+                <div id="preset-images-modal" class="modal" style="display: none;">
+                    <div class="modal-content">
+                        <span class="close" onclick="closePresetImages()">&times;</span>
+                        <h2>选择头像</h2>
+                        <div class="image-grid">
+                            <img src="/static/images/image1.jpg" alt="Image 1" onclick="selectImage(this)">
+                            <img src="/static/images/image2.jpg" alt="Image 2" onclick="selectImage(this)">
+                            <img src="/static/images/image3.jpg" alt="Image 3" onclick="selectImage(this)">
+                            <img src="/static/images/image4.jpg" alt="Image 4" onclick="selectImage(this)">
+                            <img src="/static/images/image5.jpg" alt="Image 5" onclick="selectImage(this)">
+                        </div>
+                    </div>
+                </div>
+            
+                <br><br><br>
+                <p>昵称：<input type="text" id="name" name="name" class="editable" value="请输入昵称"></p><br>
+                <p>性别：
+                    <select id="gender" name="gender" class="editable">
+                        <option value="" selected disabled>请选择性别</option>
+                        <option value="男">男</option>
+                        <option value="女">女</option>
+                    </select>
+                </p><br>
+                <p>年龄：<input type="text" id="age" name="age" class="editable"  oninput="validateAge(this)" value="请输入年龄"></p><br>
+                <p>个性签名：<input type="text" id="signature" name="signature" class="editable" value="请输入个性签名"></p><br>
+            </div>
+            <div class="rectangle right-rectangle">
+                <h2>个人信息</h2>
+                <div class="info-row">
+                    <p>家乡：<input type="text" id="hometown" name="hometown" class="editable" value="请输入家乡"></p>
+                    <p>爱好：<input type="text" id="hobby" name="hobby" class="editable" value="请输入爱好"></p>
+                </div>
+                <br> 
+
+                <div class="info-row">
+                    <p>校区：
+                        <select id="campus" name="campus" class="editable">
+                            <option value="" selected disabled>请选择校区</option>
+                            <option value="桑浦山校区">桑浦山校区</option>
+                            <option value="东海岸校区">东海岸校区</option>
+                        </select>
+                    </p>
+                    <p>年级专业：<input type="text" id="major" name="major" class="editable" value="请输入年级专业"></p>
+
+                </div>
+                <br>
+                <div class="info-row">
+                    <p>星座：
+                        <select id="constellation" name="constellation" class="editable">
+                            <option value="" selected disabled>请选择星座</option>
+                            <option value="白羊座">白羊座</option>
+                            <option value="金牛座">金牛座</option>
+                            <option value="双子座">双子座</option>
+                            <option value="巨蟹座">巨蟹座</option>
+                            <option value="狮子座">狮子座</option>
+                            <option value="处女座">处女座</option>
+                            <option value="天秤座">天秤座</option>
+                            <option value="天蝎座">天蝎座</option>
+                            <option value="射手座">射手座</option>
+                            <option value="摩羯座">摩羯座</option>
+                            <option value="水瓶座">水瓶座</option>
+                            <option value="双鱼座">双鱼座</option>
+                        </select>
+                    </p>
+                    <p>MBTI：<input type="text" id="mbti" name="mbti" class="editable" value="请输入MBTI"></p>
+                </div>
+                <br> 
+                <div class="info-row">
+                    <p>生日：<input type="text" id="birthday" name="birthday" class="editable" value="请输入生日"></p>
+                    <p>爱情宣言：<input type="text" id="declaration" name="declaration" class="editable" value="请输入爱情宣言"></p>
+                </div>
+                <br>
+                <p>个性标签：<input type="text" id="personality" name="personality" class="editable" value="请输入标签"></p><br>
+                <br>
+                <button id="saveBtn" onclick="saveInfo()">保存信息</button>
+                <button id="editBtn" onclick="toggleEditMode()" style="display: none;">编辑信息</button>
+            </div>
+        </div>
+    </section>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
