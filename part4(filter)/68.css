@@ -1,0 +1,219 @@
+* {
+    /* 初始化 */
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+
+}
+
+.container {  
+    display: flex; /* 使用Flexbox布局 */  
+    height: 100vh; /* 容器高度占满视窗 */  
+}  
+  
+/* 侧边栏样式 */  
+.sidebar {  
+    width: 100px; /* 侧边栏宽度 */  
+    background-color: #f4f4f4; /* 背景色 */  
+    padding: 20px; /* 内边距 */  
+    box-sizing: border-box; /* 边框盒模型 */  
+    position: fixed; /* 固定定位 */  
+    top: 0; /* 距离窗口顶部0像素 */  
+    left: 0; /* 距离窗口左侧0像素 */ 
+}  
+
+.sidebar .logo {
+    display: flex;
+    justify-content: center; /* 水平居中 */
+    align-items: center; /* 垂直居中 */
+    margin-bottom: 20px; /* 下方间距 */
+}
+
+.sidebar .logo img {
+    width: 50px; /* 图片宽度 */
+    height: 50px; /* 图片高度 */
+    border-radius: 50%; /* 圆形 */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* 半透明圆框 */
+}
+
+.sidebar ul {  
+    list-style-type: none; /* 去除列表样式 */  
+    padding: 0; /* 去除内边距 */  
+}  
+  
+.sidebar ul li {  
+    margin-bottom: 10px; /* 列表项间距 */  
+}  
+  
+.sidebar ul li a {  
+    text-decoration: none; /* 去除下划线 */  
+    color: #333; /* 字体颜色 */  
+    display: block; /* 使链接占据整行 */  
+    padding: 8px; /* 内边距 */  
+}  
+  
+.sidebar ul li a:hover {  
+    background-color: #979fa7; /* 鼠标悬停背景色 */  
+    color: #fff; /* 鼠标悬停字体颜色 */  
+}  
+
+
+
+.hebing{
+    margin-left: 100px; /* 为主内容区域留出侧边栏的空间（宽度+内边距） */ 
+}
+
+
+  
+/* 分类功能栏样式（水平摆放） */
+.categories {
+    display: flex; /* 使用Flexbox布局 */
+    flex-wrap: wrap; /* 允许换行 */
+    justify-content: space-between; /* 两端对齐，如果有空间则平均分配 */
+    width: 100%; /* 全宽 */
+    padding: 0 20px; /* 水平内边距 */
+    box-sizing: border-box; /* 边框盒模型 */
+    background-color: #fff; /* 背景色，可选 */
+}
+
+
+
+.categories ul {
+    list-style-type: none; /* 去除列表样式 */
+    padding: 0; /* 去除内边距 */
+    margin: 0; /* 去除外边距 */
+    display: flex; /* 使用Flexbox布局 */
+    flex-wrap: wrap; /* 允许换行 */
+}
+
+.categories ul li {
+    margin-right: 20px; /* 列表项之间的间距 */
+    margin-bottom: 20px; /* 列表项底部间距 */
+}
+
+.categories ul li:last-child {
+    margin-right: 0; /* 最后一个元素不加右边距 */
+}
+
+.categories ul li a {
+    text-decoration: none; /* 去除下划线 */
+    color: #333; /* 字体颜色 */
+    display: flex; /* 使用Flexbox布局 */
+    justify-content: center; /* 水平居中 */
+    align-items: center; /* 垂直居中 */
+    width: 150px; /* 宽度固定 */
+    height: 50px; /* 高度固定 */
+    padding: 20px; /* 内边距 */
+    border-radius: 10px; /* 圆角 */
+    background-color: rgba(255, 255, 255, 0.5); /* 半透明背景 */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* 半透明圆框 */
+    transition: background-color 0.3s ease, box-shadow 0.3s ease; /* 平滑过渡 */
+}
+
+.categories ul li a:hover {
+    background-color: rgba(255, 255, 255, 0.8); /* 鼠标悬停时更明亮的背景 */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* 鼠标悬停时更大的圆框 */
+    text-decoration: none; /* 鼠标悬停时不加下划线 */
+}
+.bod {
+    width: 100%;
+    height:100vh;
+    flex-wrap: wrap;
+    /* 弹性布局 水平+垂直居中 */
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    /* 渐变背景 */
+    background: #f4effb;
+}
+
+.card {  
+    position: relative;  
+    width: 300px;  
+    height: 450px; 
+    margin: 20px;  
+    background-color: #758a99;  
+    border-radius: 20px;  
+    overflow: hidden;  
+    /* 移除flex布局，因为我们使用绝对定位来管理front和back */  
+    /* display: flex;  
+    flex-direction: column;  
+    align-items: center;*/
+     /* 溢出隐藏 */
+     overflow: hidden;
+    color: #fff;  
+    box-shadow: 0 0 30px rgba(0, 0, 0, 0.5);  
+    perspective: 1000px; /* 添加透视效果 */  
+}  
+  
+.card .front,  
+.card .back {  
+    position: absolute;  
+    width: 100%;  
+    height: 100%;  
+    backface-visibility: hidden;  
+    transition: transform 0.6s;  
+    transform-style: preserve-3d;  
+    display: flex;  
+    flex-direction: column;  
+    align-items: center;  
+    justify-content: center;  
+    padding: 20px;  
+    box-sizing: border-box;  
+    border-radius: 20px; /* 保持圆角 */  
+}  
+  
+.card .front {  
+    background-color: #758a99;  
+    z-index: 2;  
+}  
+  
+.card .back {  
+    background-color: #5a6f7c;  
+    transform: rotateY(180deg);  
+}  
+  
+.card:hover .front {  
+    transform: rotateY(-180deg);  
+}  
+  
+.card:hover .back {  
+    transform: rotateY(0deg);  
+}  
+  
+/* 照片样式 */  
+.card .photo img {  
+    width: 100%;  
+    height: 100%;  
+    object-fit: cover;  
+    border-radius: 20px 20px 0 0; /* 圆角调整以适应卡片 */  
+}  
+  
+/* 标题和段落样式，根据需要调整 */  
+.card h5,  
+.card h6 {  
+    margin: 0 0 10px; /* 适当的垂直间距 */  
+    text-align: center;  
+}  
+  
+.card p {  
+    width: 100%; /* 确保段落宽度与卡片一致 */  
+    font-size: 16px;  
+    line-height: 24px;  
+    text-align: center; /* 根据需要调整文本对齐方式 */  
+}  
+  
+.card a {  
+    margin-top: 20px; /* 适当的顶部间距 */  
+    display: inline-block;  
+    text-align: center;  
+    font-size: 14px;  
+    color: rgba(255, 255, 255, 0.8);  
+    text-decoration: none;  
+    border: 1px solid rgba(255, 255, 255, 0.5);  
+    padding: 8px 32px;  
+    border-radius: 8px;  
+}  
+
+
+
