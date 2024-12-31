@@ -1,0 +1,226 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+}
+
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: #265491;
+    color: white;
+    padding: 10px 0;
+    z-index: 1000;
+}
+
+nav ul {
+    list-style-type: none;
+    display: flex;
+    justify-content: center;
+}
+
+nav ul li {
+    margin: 0 20px;
+}
+
+nav ul li a {
+    color: white;
+    text-decoration: none;
+}
+
+nav ul li a:hover {
+    text-decoration: underline;
+}
+
+.full-screen {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    font-size: 24px;
+    background-color: #f0f0f0;
+    padding-top: 60px; /* 留出导航栏的高度 */
+}
+
+.personal-container {
+    display: flex; /* 水平方向排列矩形 */
+    align-items: center; /* 垂直居中 */
+    justify-content: center; /* 水平居中 */
+    width: 80%; /* 根据需要调整 */
+    position: relative; /* 相对定位 */
+}
+
+.rectangle {
+    width: 45%; /* 调整矩形宽度 */
+    /*height: 300px; 固定高度 */
+    height: 400px;
+    margin: 0 20px; /* 左右外边距 */
+    background-color: rgba(51, 51, 51, 0.7); /* 半透明背景颜色 */
+    color: white; /* 字体颜色 */
+    display: flex; /* 让内容居中 */
+    flex-direction: column; /* 子元素垂直排列 */
+    justify-content: center;
+    align-items: center;
+    padding: 20px; /* 内边距 */
+    border-radius: 8px; /* 圆角设计 */
+}
+
+.left-rectangle {
+    width: 30%; /* 或者你想要的任何宽度 */
+    background-color: rgba(76, 175, 80, 0.8); 
+    padding: 20px; /* 内边距 */
+    margin-left: -20px; /* 左侧与容器的距离 */
+    margin-right: 20px; /* 右侧与右侧长方形的距离 */
+    height: 800px;
+    padding-top: 70px; /* 顶部留出空间 */
+}
+
+.right-rectangle {
+    width: 80%; /* 调整右侧矩形宽度 */
+    margin: 0 20px; /* 左右外边距 */
+    background-color: rgba(255, 255, 255, 0.8); /* 半透明背景颜色 */
+    color: black; /* 字体颜色 */
+    padding: 10px 20px; /* 减少顶部内边距 */
+    border-radius: 8px; /* 圆角设计 */
+    display: flex; /* 使用 Flexbox 布局 */
+    flex-direction: column; /* 垂直排列 */
+    align-items: flex-start; /* 左对齐 */
+    justify-content: flex-start; /* 垂直对齐方式改为顶部对齐 */
+    overflow: hidden; /* 隐藏溢出文本 */
+    margin-left: 25px; /* 左侧与左侧长方形的距离 */
+    margin-right: 10px; /* 右侧与容器的距离 */
+    height: 800px;
+}
+
+.full-screen2 {
+    height: 100vh;
+    display: flex;
+    flex-direction: column; /* 改为列布局 */
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    font-size: 24px;
+    background-color: #f0f0f0;
+    background-size: cover; /* 背景图完全覆盖 */
+    background-position: center; /* 背景图居中 */
+    padding-top: 60px; /* 留出导航栏的高度 */
+}
+
+.circle2 {
+    width: 150px; /* 圆形宽度 */
+    height: 150px; /* 圆形高度 */
+    border-radius: 50%; /* 圆形 */
+    overflow: hidden; /* 超出部分隐藏 */
+    border: 5px solid white; /* 圆形边框 */
+    margin-bottom: 300px; /* 圆形与下方文字间距 */
+    position: absolute; /* 绝对定位 */
+    top: 40px; /* 圆形在矩形上方 */
+}
+
+.circle-photo {
+    width: 100%; /* 图片宽度 */
+    height: 100%; /* 图片高度 */
+    object-fit: cover; /* 保持长宽比 */
+}
+
+.right-rectangle h2 {
+    margin-top: 5px; /* 去掉顶部间距 */
+    margin-bottom: 30px; /* 底部间距 */
+    text-align: left; /* 标题左对齐 */
+    font-size: 35px; /* 标题字体大小 */
+    font-weight: bold; /* 标题加粗 */
+
+}
+
+.right-rectangle p {
+    text-align: left; /* 段落左对齐 */
+    font-size: 23px; /* 段落字体大小 */
+    font-style: normal; /* 设置字体样式，可以根据需要修改为 italic 或 bold */
+    line-height: 3; /* 行高 */
+    overflow: hidden; /* 隐藏溢出文本 */
+    text-overflow: ellipsis; /* 溢出时显示省略号 */
+    max-width: 100%; /* 确保段落不会超出矩形宽度 */
+    font-family: SimSun, Songti SC, DengXian ,Microsoft YaHei,sans-serif;
+
+}
+
+
+#avatar-upload {
+    display: none; /* 隐藏文件输入框 */
+}
+
+/* 两两放在同一行 */
+.info-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.info-row p {
+    margin: 0;
+    flex: 1;
+    font-size: 25px;
+    white-space: nowrap; /* 防止文本换行 */
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 50%;
+}
+
+.info-row p + p {
+    margin-left: 10px; /* 两个之间的间距 */
+}
+
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0,0,0,0.4);
+}
+
+.modal-content {
+    background-color: #fefefe;
+    margin: 15% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+    max-width: 600px;
+}
+
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.image-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.image-grid img {
+    width: 100px;
+    height: 100px;
+    cursor: pointer;
+}

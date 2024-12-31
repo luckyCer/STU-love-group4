@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <title>与 {{ receiver_username }} 的聊天</title>
+</head>
+<body>
+    <h1>与 {{ receiver_username }} 的聊天</h1>
+    <div>
+        {% for message in messages %}
+            <p>{{ message[0] }}</p>
+        {% endfor %}
+    </div>
+    <form method="POST">
+        <input type="text" name="message" placeholder="输入消息" required>
+        <button type="submit">发送</button>
+    </form>
+    <a href="{{ url_for('chat') }}">返回好友列表</a>
+</body>
+</html>
+
+
