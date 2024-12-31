@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>微信风格聊天页面</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/chat.css') }}">
+</head>
+<body>
+    <div class="container">
+        <div class="sidebar">
+            <h2>聊天列表</h2>
+             <!-- 好友列表 -->
+             <ul id="friend-list" class="friend-list">
+                {% for friend in friends %}
+                    <li>
+                        <a href="{{ url_for('chat', receiver_id=friend[0]) }}">{{ friend[1] }}</a>
+                    </li>
+                {% endfor %}
+            </ul>
+
+            <!-- 已聊对象列表 -->
+            <ul id="chatted-list" class="chatted-list">
+                {% for chatted in chatted_users %}
+                    <li>
+                        <a href="{{ url_for('chat', receiver_id=chatted[0]) }}">{{ chatted[1] }}</a>
+                    </li>
+                {% endfor %}
+            </ul>
+
+
+            <ul id="friend-list" class="friend-list">
+                {% for friend in friends %}
+                    <li class="friend-item" data-chat-id="{{ friend.id }}">
+                        {{ friend.username }}
+                    </li>
+                {% endfor %}
+            </ul>
+            
+            <ul id="chatted-list" class="chatted-list">
+                {% for chatted in chatted_users %}
+                    <li class="chatted-item" data-chat-id="{{ chatted.id }}">
+                        {{ chatted.username }}
+                    </li>
+                {% endfor %}
+            </ul>            
+
+            <form method="POST" action="/add_friend">
+                <input type="text" name="friend_id" placeholder="输入好友ID" required=""/>
+                <button type="submit">添加</button>
+            </form>            
+        </div>
+
+        <div class="chat-area">
+            <div class="chat-header" id="chat-header">
+                <h3>选择聊天对象</h3>
+            </div>
+
+            <div class="chat-messages" id="chat-messages"></div>
+
+            <form class="chat-input" onsubmit="sendMessage(event)">
+                <button type="button" class="emoji-button" onclick="toggleEmojiPicker()">😊</button>
+                <div class="emoji-picker" id="emoji-picker">
+                    <!-- 表情符号 -->
+                    <span onclick="addEmoji('😊')">😊</span>
+                    <span onclick="addEmoji('😂')">😂</span>
+                    <span onclick="addEmoji('❤️')">❤️</span>
+                    <span onclick="addEmoji('👍')">👍</span>
+                    <span onclick="addEmoji('😭')">😭</span>
+                    <span onclick="addEmoji('😎')">😎</span>
+                    <span onclick="addEmoji('😡')">😡</span>
+                    <span onclick="addEmoji('🎉')">🎉</span>
+                    <hr>
+                    <label for="upload-emoji" style="cursor: pointer; color: blue;">+ 上传表情</label>
+                    <input type="file" id="upload-emoji" accept="image/*" style="display: none;" onchange="uploadEmoji(event)">
+                </div>
+                <input type="text" id="message-input" placeholder="输入消息..." />
+                <button type="submit" id="send-button">发送</button>
+            </form>
+        </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/chat.js') }}"></script>
+</body>
+</html>

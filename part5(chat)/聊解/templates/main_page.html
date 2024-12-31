@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>主页</title>
+</head>
+<body>
+    <h1>所有用户</h1>
+    <ul>
+        {% for user in users %}
+            <li>
+                <form action="{{ url_for('add_friend_direct') }}" method="POST" style="display:inline;">
+                    <input type="hidden" name="friend_id" value="{{ user[0] }}"> <!-- user[0] 是用户 ID -->
+                    <button type="submit">{{ user[1] }}</button> <!-- 用户名 -->
+                </form>
+            </li>
+        {% endfor %}
+    </ul>
+    <a href="{{ url_for('chat') }}">进入聊天界面</a>
+</body>
+</html>

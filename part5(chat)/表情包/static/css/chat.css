@@ -1,0 +1,206 @@
+/* 基本样式 */ 
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f5f5f5;
+}
+
+/* 页面容器 */
+.container {
+    display: flex;
+    height: 100vh;
+}
+
+/* 左侧好友列表样式 */
+.sidebar {
+    width: 250px;
+    background-color: #fff;
+    border-right: 1px solid #ddd;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+.sidebar h2 {
+    font-size: 1.5em;
+    margin-bottom: 20px;
+}
+
+button {
+    background-color: #eee;
+    border: none;
+    padding: 10px;
+    margin-bottom: 10px;
+    cursor: pointer;
+    font-size: 1em;
+}
+
+button:hover {
+    background-color: #ddd;
+}
+
+.friend-list, .chatted-list {
+    list-style: none;
+    padding: 0;
+}
+
+.friend-list li, .chatted-list li {
+    padding: 10px;
+    cursor: pointer;
+    font-size: 1.2em;
+}
+
+.friend-list li:hover, .chatted-list li:hover {
+    background-color: #f1f1f1;
+}
+
+/* 右侧聊天区域样式 */
+.chat-area {
+    flex-grow: 1;
+    padding: 20px;
+    background-color: #fff;
+    display: flex;
+    flex-direction: column;
+}
+
+.chat-header {
+    margin-bottom: 20px;
+}
+
+.chat-header h3 {
+    font-size: 1.8em;
+}
+
+.chat-messages {
+    flex-grow: 1;
+    overflow-y: auto;
+    padding: 10px;
+    margin-bottom: 20px;
+    background-color: #fafafa;
+    border-radius: 10px;
+}
+
+.chat-input {
+    display: flex;
+    align-items: center;
+}
+
+.chat-input input {
+    width: 80%;
+    padding: 10px;
+    margin-right: 10px;
+    border-radius: 20px;
+    border: 1px solid #ccc;
+    font-size: 1.1em;
+}
+
+.chat-input button {
+    padding: 10px 20px;
+    background-color: #5cb85c;
+    border: none;
+    color: white;
+    border-radius: 20px;
+    font-size: 1.1em;
+    cursor: pointer;
+}
+
+.chat-input button:hover {
+    background-color: #4cae4c;
+}
+
+/* 我的消息样式 */
+.my-message {
+	padding: 5px 8px;
+	display: inline-block;
+	padding: 5px 8px;               /* 内边距：上下5px，左右8px */
+    display: block;                 /* 使每个框单独占一行 */
+    border-radius: 4px;             /* 设置圆角效果 */
+    margin: 10px 0 10px 10px;       /* 外边距：上10px，右0px，下10px，左10px */
+    position: relative;             /* 为了添加伪元素箭头 */
+    background-color: #14D74B;      /* 绿色背景 */
+    color: white;                   /* 白色文字 */
+    max-width: 30%;                 /* 限制最大宽度，避免框过宽 */
+    word-wrap: break-word;          /* 长字词自动换行 */
+    white-space: normal;            /* 允许换行 */
+    margin-left: auto;           /* 靠右对齐 */
+    
+}
+
+/* 好友的消息样式 */
+.other-message {
+    background-color: white;    /* 白色背景 */
+    color: black;               /* 黑色文字 */
+    margin-right: auto;         /* 靠左对齐 */
+    margin-bottom: 10px;        /* 底部间距 */
+    padding: 10px;              /* 内边距 */
+    border-radius: 10px;        /* 圆角 */
+    word-wrap: break-word;      /* 自动换行 */
+    white-space: normal;        /* 正常换行 */
+    display: block;             /* 改为 block，确保每个框占据一行 */
+    width: auto;                /* 宽度根据内容自动调整 */
+    max-width: 30%;             /* 最大宽度为屏幕宽度的 80% */
+    word-break: break-word;     /* 防止长单词或链接超出边界 */
+}
+
+/* 控制每行最多 10 个字符，超出部分换行 */
+.message-text {
+    display: block;             /* 强制显示为 block 元素，确保每个框占一行 */
+    width: auto;                /* 根据内容自动调整宽度 */
+    max-width: 100%;            /* 不限制最大宽度 */
+    word-wrap: break-word;      /* 自动换行 */
+    white-space: normal;        /* 换行 */
+    word-break: break-word;     /* 防止长单词或链接超出边界 */
+    overflow-wrap: break-word;  /* 允许换行 */
+}
+
+/* 表情选择器 */
+.emoji-button {
+    margin-right: 10px;
+    font-size: 1.5em;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+}
+
+.emoji-button:hover {
+    color: #007bff;
+}
+
+.emoji-picker {
+    display: none;
+    position: absolute;
+    bottom: 100px;
+    left: 50px;
+    background-color: white;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    padding: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.emoji-picker span {
+    font-size: 1.5em;
+    cursor: pointer;
+    margin: 5px;
+}
+
+.emoji-picker span:hover {
+    background-color: #f1f1f1;
+}
+
+/* 上传表情 */
+#upload-emoji {
+    display: none;
+}
+
+img {
+    max-width: 100%;   /* 限制宽度最大为容器宽度 */
+    max-height: 80px;  /* 限制高度最大为 80px（您可以根据需求调整） */
+    height: auto;      /* 自动调整高度，保持宽高比例 */
+    width: auto;       /* 自动调整宽度，保持宽高比例 */
+}
