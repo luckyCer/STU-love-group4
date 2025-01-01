@@ -1,0 +1,466 @@
+<form method="post" action="/login" autocomplete="on">
+    <!DOCTYPE html>
+    <html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <title>登录注册页面</title>
+        <style>
+            * {
+                margin: 0;
+                top: 0;
+            }
+
+            /* body修改 */
+            body {
+                height: 100vh;
+                /* background: url(static/注册背景.png) no-repeat;  删除*/
+                background-size: cover;
+                display: flex;
+                justify-content: flex-start;
+                /* 修改为左对齐 */
+                align-items: center;
+            }
+
+            /* 添加视频样式 */
+            #background-video {
+                position: fixed;
+                /* 使用fixed定位 */
+                right: 0;
+                bottom: 0;
+                min-width: 100%;
+                min-height: 100%;
+                width: 100vw;
+                height: 100vh;
+                z-index: -100;
+                /* 确保视频在内容下方 */
+                background-size: cover;
+                object-fit: cover;
+                /* 视频充满整个屏幕 */
+            }
+
+            /* 修改box样式 */
+            .box {
+                width: 350px;
+                height: 350px;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+
+                /* 修改部分 */
+                /* backdrop-filter: blur(1px); */
+                background-color: rgba(241, 249, 255, 0.5);
+                /* 设置背景颜色为半透明
+                    /* 边框 */
+                border: 1px solid rgba(0, 0, 0, 0.3);
+                /* 阴影 */
+                box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+                margin-left: 170px;
+                /* 新增，使盒子向左移动一定的比例 */
+                margin-top: 50px;
+                /* 新增，使盒子向上移动一定的比例 */
+                border-radius: 10px;
+                /* 圆角 */
+            }
+
+            .box>h2 {
+                color: #000;
+                margin-bottom: 30px;
+            }
+
+            .box .input-box {
+                display: flex;
+                flex-direction: column;
+                box-sizing: border-box;
+                margin-bottom: 10px;
+            }
+
+            .box .input-box label {
+                font-size: 13px;
+                color: #000;
+                margin-bottom: 5px;
+            }
+
+            .box .input-box input {
+                letter-spacing: 1px;
+                font-size: 14px;
+                box-sizing: border-box;
+                width: 250px;
+                height: 35px;
+                border-radius: 5px;
+                border: 1px solid rgba(0, 0, 0, 0.3);
+                background: rgba(230, 230, 230, 0.8);
+                outline: none;
+                padding: 0 12px;
+                color: #000;
+                transition: 0.2s;
+            }
+
+            /* 输入框聚焦效果 */
+            .box .input-box input:focus {
+                border: 1px solid rgba(255, 255, 255, 0.8);
+            }
+
+            .box .btn-box {
+                width: 250px;
+                display: flex;
+                flex-direction: column;
+            }
+
+            /* 修改 */
+            .box .btn-box>a {
+                outline: none;
+                display: block;
+                width: 250px;
+                text-align: end;
+                text-decoration: none;
+                font-size: 13px;
+                color: rgba(80, 76, 76, 0.8);
+                /* 修改字体颜色 */
+            }
+
+            /* 修改 */
+            .box .btn-box>a:hover {
+                color: rgb(236, 175, 175);
+                /* 修改字体颜色 */
+            }
+
+            .box .btn-box>div {
+                margin-top: 10px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+
+            .box .btn-box>div>button {
+                outline: none;
+                margin-top: 10px;
+                display: block;
+                font-size: 14px;
+                border-radius: 5px;
+                transition: 0.2s;
+            }
+
+            .box .btn-box>div>button:nth-of-type(1) {
+                width: 120px;
+                height: 35px;
+                color: rgba(255, 255, 255, 0.9);
+                border: 1px solid rgba(00, 96, 96, 0.7);
+                background: rgba(0, 96, 96, 0.45);
+            }
+
+            .box .btn-box>div>button:hover {
+                border: 1px solid rgba(00, 96, 96);
+                background: rgba(00, 96, 96);
+            }
+
+
+
+            /* 增添部分 */
+            .hidden {
+                display: none;
+            }
+
+            /* 弹窗样式 */
+            .modal {
+                display: none;
+                /* 默认隐藏 */
+                position: fixed;
+                z-index: 1000;
+                /* 确保弹窗在最顶层 */
+                left: 0;
+                top: 0;
+                width: 100%;
+                height: 100%;
+                overflow: auto;
+                background-color: transparent;
+                /* 透明背景 */
+            }
+
+            .modal-content {
+                width: 320px;
+                height: 320px;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                background-color: rgba(241, 249, 255, 0.5);
+                /* 设置背景颜色为半透明 */
+                border: 1px solid rgba(0, 0, 0, 0.3);
+                /* 边框 */
+                box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+                /* 阴影 */
+                margin-left: 170px;
+                margin-top: 300px;
+                border-radius: 10px;
+                /* 圆角 */
+                padding: 20px;
+                /* 内边距 */
+                color: #000;
+                position: relative;
+                /* 使关闭按钮能够相对于弹窗定位 */
+            }
+
+            .modal-content h2 {
+                color: #000;
+                margin-bottom: 30px;
+                margin: auto;
+            }
+
+            .modal-content .input-box {
+                display: flex;
+                flex-direction: column;
+                box-sizing: border-box;
+                margin-bottom: 10px;
+            }
+
+            .modal-content .input-box label {
+                font-size: 13px;
+                color: #000;
+                margin-bottom: 5px;
+            }
+
+            .modal-content input {
+                letter-spacing: 1px;
+                font-size: 14px;
+                box-sizing: border-box;
+                width: 250px;
+                height: 35px;
+                border-radius: 5px;
+                border: 1px solid rgba(0, 0, 0, 0.3);
+                background: rgba(230, 230, 230, 0.8);
+                outline: none;
+                padding: 0 12px;
+                color: #000;
+                transition: 0.2s;
+            }
+
+            .modal-content input:focus {
+                border: 1px solid rgba(255, 255, 255, 0.8);
+            }
+
+            .modal-content .btn-box {
+                width: 250px;
+                display: flex;
+                flex-direction: column;
+            }
+
+            .modal-content .btn-box a {
+                outline: none;
+                display: block;
+                width: 250px;
+                text-align: end;
+                text-decoration: none;
+                font-size: 13px;
+                color: rgba(80, 76, 76, 0.8);
+                /* 修改字体颜色 */
+            }
+
+            .modal-content .btn-box a:hover {
+                color: rgb(236, 175, 175);
+                /* 修改字体颜色 */
+            }
+
+            .modal-content .btn-box div {
+                margin-top: 10px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+
+            .modal-content .btn-box div button {
+                outline: none;
+                margin-top: 10px;
+                display: block;
+                font-size: 14px;
+                border-radius: 5px;
+                transition: 0.2s;
+            }
+
+            .modal-content .btn-box div button:nth-of-type(1) {
+                width: 120px;
+                height: 35px;
+                color: rgba(255, 255, 255, 0.9);
+                border: 1px solid rgba(0, 96, 96, 0.7);
+                background: rgba(0, 96, 96, 0.45);
+            }
+
+            .modal-content .btn-box div button:hover {
+                border: 1px solid rgba(0, 96, 96);
+                background: rgba(0, 96, 96);
+            }
+
+            /* 关闭按钮样式 */
+            .modal-content .close {
+                position: absolute;
+                top: 10px;
+                /* 距离顶部的距离 */
+                right: 15px;
+                /* 距离右边的距离 */
+                font-size: 40px;
+                /* 字体大小 */
+                font-weight: bold;
+                color: #000;
+                /* 文字颜色 */
+                cursor: pointer;
+                /* 鼠标悬停时显示指针 */
+                transition: 0.3s;
+                /* 平滑过渡效果 */
+            }
+
+            /* 关闭按钮悬停效果 */
+            .modal-content .close:hover {
+                color: rgba(255, 0, 0, 0.8);
+                /* 悬停时文字颜色变为红色 */
+            }
+
+            /* 确保关闭按钮不会影响其他内容的布局 */
+            .modal-content .close::before {
+                content: "";
+                /* 清除默认的文本选择 */
+            }
+
+            /*css增添部分结束*/
+        </style>
+        <!-- <link rel="stylesheet" href="./style.css"> -->
+    </head>
+
+    <body>
+        <!-- 新添加背景视频 -->
+        <video autoplay muted loop id="background-video">
+            <source src="static/video2.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+
+        <div class="box">
+            <h2>登录</h2>
+            <!-- 当用户输入的凭据在数据库中存在时，将会显示“登录成功”的消息 -->
+            {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+            <ul class="flashes" style="list-style-type: none; color: rgb(36, 28, 28);font-size: small; ">
+                {% for category, message in messages %}
+                <li class="{{ category }}">{{ message }}</li>
+                {% endfor %}
+            </ul>
+            {% endif %}
+            {% endwith %}
+            <div class="input-box">
+                <label>手机号:</label>
+                <input type="text" placeholder="请输入手机号" name="phone_number" required />
+            </div>
+            <div class="input-box">
+                <label>密码:</label>
+                <input type="password" placeholder="请输入密码" name="psw" required />
+            </div>
+            <div class="btn-box">
+                <a href="javascript:void(0)" id="forget-psw">忘记密码?</a>
+                <div>
+                    <button type="submit">登录</button>
+                    <!-- <button type="submit">注册</button> -->
+                </div>
+            </div>
+        </div>
+</form>
+<!-- 忘记密码弹窗 -->
+<div id="forget-psw-modal" class="modal">
+    <div class="modal-content">
+        <span class="close">&times;</span>
+        <h2>重置密码</h2>
+        <form id="reset-form">
+            <div class="input-box">
+                <label for="phone_number">手机号:</label>
+                <input type="text" id="phone_number" name="phone_number" required placeholder="请输入手机号">
+            </div>
+            <div class="input-box">
+                <label for="new_password">新密码:</label>
+                <input type="password" id="new_password" name="new_password" required placeholder="请输入新密码">
+            </div>
+            <div class="input-box">
+                <label for="confirm_password">确认密码:</label>
+                <input type="password" id="confirm_password" name="confirm_password" required placeholder="请再次输入新密码">
+            </div>
+            <div class="btn-box">
+                <div>
+                    <button type="submit">提交</button>
+                </div>
+            </div>
+
+        </form>
+    </div>
+</div>
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        var modal = document.getElementById('forget-psw-modal');
+        var btn = document.getElementById('forget-psw');
+        var span = document.getElementsByClassName("close")[0];
+        var loginBox = document.querySelector('.box'); // 获取登录框元素
+
+        // 点击忘记密码链接时显示弹窗
+        btn.onclick = function () {
+            modal.style.display = "block";
+            loginBox.classList.add('hidden'); // 隐藏登录框
+        }
+
+        // 点击关闭按钮时隐藏弹窗
+        span.onclick = function () {
+            modal.style.display = "none";
+            loginBox.classList.remove('hidden'); // 显示登录框
+        }
+
+        // 点击弹窗外区域时隐藏弹窗
+        window.onclick = function (event) {
+            if (event.target == modal) {
+                modal.style.display = "none";
+                loginBox.classList.remove('hidden'); // 显示登录框
+            }
+        }
+
+        // 表单提交处理
+        document.getElementById('reset-form').addEventListener('submit', function (event) {
+            event.preventDefault(); // 防止表单默认提交行为
+
+            // 获取表单数据
+            var phone_number = document.getElementById('phone_number').value;
+            var new_password = document.getElementById('new_password').value;
+            var confirm_password = document.getElementById('confirm_password').value;
+
+            // 简单的验证
+            if (new_password !== confirm_password) {
+                alert("密码不匹配，请重新输入。");
+                return;
+            }
+
+            // 向后端发送请求以重置密码
+            fetch('/reset_password', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    phone_number: phone_number,
+                    new_password: new_password
+                }),
+            })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        alert("密码重置成功，请重新登录。");
+                        modal.style.display = "none"; // 隐藏弹窗
+                        loginBox.classList.remove('hidden'); // 显示登录框
+                    } else {
+                        alert(data.message);
+                    }
+                })
+                .catch((error) => {
+                    console.error('Error:', error);
+                    alert("发生错误，请重试。");
+                });
+        });
+    });
+</script>
+<!--到这结束-->
+
+</body>
+
+</html>

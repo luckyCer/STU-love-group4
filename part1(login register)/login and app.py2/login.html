@@ -1,0 +1,398 @@
+<form method="post" action="/login" autocomplete="on">
+    <!DOCTYPE html>
+    <html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <title>登录注册页面</title>
+        <style>
+            * {
+                margin: 0;
+                top: 0;
+            }
+
+            body {
+                height: 100vh;
+                background: url(背景.jpg) no-repeat;
+                background-size: cover;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+
+            .box {
+                width: 350px;
+                height: 350px;
+                backdrop-filter: blur(1px);
+                background: linear-gradient(to bottom, rgba(163, 230, 239, 0.45), rgba(243, 194, 156, 0.38));
+                /* 渐变背景，带透明度 */
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                border-radius: 6px;
+            }
+
+            .box>h2 {
+                color: #000;
+                /*color: rgba(226, 238, 240, 0.9);*/
+                margin-bottom: 30px;
+
+            }
+
+            .box .input-box {
+                display: flex;
+                flex-direction: column;
+                box-sizing: border-box;
+                margin-bottom: 10px;
+            }
+
+            .box .input-box label {
+                font-size: 13px;
+                color: #000;
+                margin-bottom: 5px;
+            }
+
+            .box .input-box input {
+                letter-spacing: 1px;
+                font-size: 14px;
+                box-sizing: border-box;
+                width: 250px;
+                height: 35px;
+                border-radius: 5px;
+                border: 1px solid rgba(0, 0, 0, 0.3);
+                background: rgba(230, 230, 230, 0.8);
+                outline: none;
+                padding: 0 12px;
+                color: #000;
+                transition: 0.2s;
+            }
+
+            /* 输入框聚焦效果 */
+            .box .input-box input:focus {
+                border: 1px solid rgba(255, 255, 255, 0.8);
+            }
+
+            .box .btn-box {
+                width: 250px;
+                display: flex;
+                flex-direction: column;
+            }
+
+            .box .btn-box>a {
+                outline: none;
+                display: block;
+                width: 250px;
+                text-align: end;
+                text-decoration: none;
+                font-size: 13px;
+                color: rgba(255, 255, 255, 0.8);
+            }
+
+            .box .btn-box>a:hover {
+                color: rgba(255, 255, 255, 1);
+            }
+
+            .box .btn-box>div {
+                margin-top: 10px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+
+            .box .btn-box>div>button {
+                outline: none;
+                margin-top: 10px;
+                display: block;
+                font-size: 14px;
+                border-radius: 5px;
+                transition: 0.2s;
+            }
+
+            .box .btn-box>div>button:nth-of-type(1) {
+                width: 120px;
+                height: 35px;
+                color: rgba(255, 255, 255, 0.9);
+                border: 1px solid rgba(00, 96, 96, 0.7);
+                background: rgba(0, 96, 96, 0.45);
+            }
+
+            .box .btn-box>div>button:hover {
+                border: 1px solid rgba(00, 96, 96);
+                background: rgba(00, 96, 96);
+            }
+
+            .hidden {
+                display: none;
+            }
+
+            /* 弹窗样式 */
+            .modal {
+                display: none;
+                /* 默认隐藏 */
+                position: fixed;
+                z-index: 100;
+                left: 0;
+                top: 0;
+                width: 100%;
+                height: 100%;
+                overflow: auto;
+                background-color: transparent;
+                /* 设置背景透明 */
+            }
+
+            .modal-content {
+                background: linear-gradient(to bottom, rgba(163, 230, 239, 0.45), rgba(243, 194, 156, 0.38));
+                margin: 15% auto;
+                border-radius: 5px;
+                /* 修改圆角 */
+                padding: 20px;
+                border: 1px solid #e7f8d0;
+
+                max-width: 350px;
+                color: #000;
+            }
+
+            .modal-content>h2 {
+                color: #000;
+                margin-bottom: 30px;
+                margin: auto;
+            }
+
+            .modal-content .input-box {
+                display: flex;
+                flex-direction: column;
+                box-sizing: border-box;
+                margin-bottom: 10px;
+            }
+
+            .modal-content .input-box label {
+                font-size: 13px;
+                color: #000;
+                margin-bottom: 5px;
+            }
+
+            .modal-content input {
+                letter-spacing: 1px;
+                font-size: 14px;
+                box-sizing: border-box;
+
+                width: 350px;
+                height: 35px;
+                border-radius: 5px;
+                border: 1px solid rgba(0, 0, 0, 0.3);
+                background: rgba(230, 230, 230, 0.8);
+                outline: none;
+                padding: 0 12px;
+                color: #000;
+                transition: 0.2s;
+            }
+
+            .modal-content input:focus {
+                border: 1px solid rgba(255, 255, 255, 0.8);
+            }
+
+            label {
+                font-size: 14px;
+                margin-bottom: 5px;
+            }
+
+            .modal-content button {
+                outline: none;
+                margin-top: 10px;
+                display: block;
+                font-size: 14px;
+                border-radius: 5px;
+                transition: 0.2s;
+                margin: auto;
+            }
+
+            .modal-content button:nth-of-type(1) {
+                width: 120px;
+                height: 35px;
+                color: rgba(255, 255, 255, 0.9);
+                border: 1px solid rgba(00, 96, 96, 0.7);
+                background: rgba(0, 96, 96, 0.45);
+            }
+
+            .modal-content button:hover {
+                border: 1px solid rgba(00, 96, 96);
+                background: rgba(00, 96, 96);
+            }
+
+
+            .close {
+                color: #629b30;
+                float: right;
+                font-size: 28px;
+                font-weight: bold;
+            }
+
+            .close:hover,
+            .close:focus {
+                color: rgba(00, 96, 96);
+                text-decoration: none;
+                cursor: pointer;
+            }
+
+
+            form label {
+                display: block;
+                margin-top: 10px;
+            }
+
+            form input {
+                width: 100%;
+                padding: 8px;
+                margin-top: 5px;
+                box-sizing: border-box;
+            }
+
+            form button {
+                width: 100%;
+                padding: 10px;
+                margin-top: 20px;
+                background-color: #4CAF50;
+                color: white;
+                border: none;
+                cursor: pointer;
+            }
+
+            form button:hover {
+                background-color: #45a049;
+            }
+        </style>
+
+    </head>
+
+    <body>
+        <div class="box" id="login-box">
+            <h2>汕恋</h2>
+            <!-- 当用户输入的凭据在数据库中存在时，将会显示“登录成功”的消息 -->
+            {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+            <ul class="flashes" style="list-style-type: none; color: rgb(36, 28, 28);font-size: small; ">
+                {% for category, message in messages %}
+                <li class="{{ category }}">{{ message }}</li>
+                {% endfor %}
+            </ul>
+            {% endif %}
+            {% endwith %}
+            <div class="input-box">
+                <label>用户名:</label>
+                <input type="text" placeholder="请输入用户名" name="username" required />
+            </div>
+            <div class="input-box">
+                <label>密码:</label>
+                <input type="password" placeholder="请输入密码" name="psw" required />
+            </div>
+            <div class="btn-box">
+                <a href="javascript:void(0)" id="forget-psw">忘记密码?</a>
+                <div>
+                    <button type="submit">登录</button>
+                </div>
+            </div>
+        </div>
+</form>
+
+<!-- 忘记密码弹窗 -->
+<div id="forget-psw-modal" class="modal">
+    <div class="modal-content">
+        <span class="close">&times;</span>
+        <h2>重置密码</h2>
+        <form id="reset-form">
+            <label for="username">用户名:</label>
+            <input type="text" id="confirm-username" name="confirm-username" required placeholder="请输入用户名">
+
+            <label for="email">邮箱:</label>
+            <input type="email" id="confirm-email" name="confirm-email" required placeholder="请输入邮箱">
+
+            <label for="new-password">新密码:</label>
+            <input type="password" id="new-password" name="new-password" required placeholder="请输入新密码">
+
+            <label for="confirm-password">确认密码:</label>
+            <input type="password" id="confirm-password" name="confirm-password" required placeholder="请再次输入新密码">
+
+            <button type="submit">提交</button>
+        </form>
+    </div>
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        var modal = document.getElementById('forget-psw-modal');
+        var btn = document.getElementById('forget-psw');
+        var span = document.getElementsByClassName("close")[0];
+        var loginBox = document.getElementById('login-box'); // 获取登录框元素
+
+        // 点击忘记密码链接时显示弹窗
+        btn.onclick = function () {
+            modal.style.display = "block";
+            loginBox.classList.add('hidden'); // 隐藏登录框
+        }
+
+        // 点击关闭按钮时隐藏弹窗
+        span.onclick = function () {
+            modal.style.display = "none";
+            loginBox.classList.remove('hidden'); // 显示登录框
+        }
+
+        // 点击弹窗外区域时隐藏弹窗
+        window.onclick = function (event) {
+            if (event.target == modal) {
+                modal.style.display = "none";
+                loginBox.classList.remove('hidden'); // 显示登录框
+            }
+        }
+
+        // 表单提交处理
+        document.getElementById('reset-form').addEventListener('submit', function (event) {
+            event.preventDefault(); // 防止表单默认提交行为
+
+            // 获取表单数据
+            var username = document.getElementById('confirm-username').value;
+            var email = document.getElementById('confirm-email').value;
+            var newPassword = document.getElementById('new-password').value;
+            var confirmPassword = document.getElementById('confirm-password').value;
+
+            // 简单的验证
+            if (newPassword !== confirmPassword) {
+                alert("密码不匹配，请重新输入。");
+                return;
+            }
+
+            // 向后端发送请求以重置密码
+            fetch('/reset_password', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    username: username,
+                    email: email,
+                    newPassword: newPassword
+                }),
+            })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        alert("密码重置成功，请重新登录。");
+                        modal.style.display = "none"; // 隐藏弹窗
+                        loginBox.classList.remove('hidden'); // 显示登录框
+                    } else {
+                        alert(data.message);
+                    }
+                })
+                .catch((error) => {
+                    console.error('Error:', error);
+                    alert("发生错误，请重试。");
+                });
+            // 隐藏弹窗
+            modal.style.display = "none";
+        });
+    });
+</script>
+
+</body>
+
+</html>
