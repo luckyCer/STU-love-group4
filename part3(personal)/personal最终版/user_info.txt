@@ -1,0 +1,18 @@
+
+CREATE TABLE user_info (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(255) NOT NULL,
+    gender VARCHAR(10) NOT NULL,
+    age INT NOT NULL,
+    signature TEXT,
+    hometown VARCHAR(255),
+    hobby VARCHAR(255),
+    campus VARCHAR(255),
+    major VARCHAR(255),
+    constellation VARCHAR(50),
+    mbti VARCHAR(50),
+    declaration TEXT,
+    personality VARCHAR(255)
+    avatar VARCHAR(255),
+    birthday VARCHAR(255);
+);
